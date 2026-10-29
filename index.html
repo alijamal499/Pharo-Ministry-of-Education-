@@ -4,20 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CDO | Sheikh & Sahil Explorer</title>
-  <!-- High Standard Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&display=swap" rel="stylesheet">
   
   <style>
-    /* CSS Variables for Unique Color Scheme */
     :root {
       --bg-dark: #090d16;
       --card-bg: #131b2e;
       --accent-yellow: #facc15;
-      --accent-gold: #eab308;
       --accent-emerald: #10b981;
-      --accent-indigo: #6366f1;
       --text-light: #f8fafc;
       --text-muted: #94a3b8;
     }
@@ -37,7 +33,7 @@
       overflow-x: hidden;
     }
 
-    /* Header Layout */
+    /* Header & Logo */
     header {
       position: sticky;
       top: 0;
@@ -51,13 +47,10 @@
       justify-content: space-between;
     }
 
-    /* Top Center CDO Logo */
     .header-logo-container {
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
-      display: flex;
-      align-items: center;
     }
 
     .cdo-logo {
@@ -65,15 +58,7 @@
       border: 2.5px solid var(--accent-yellow);
       border-radius: 50px;
       padding: 0.4rem 1.4rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       box-shadow: 0 0 15px rgba(250, 204, 21, 0.3);
-      transition: transform 0.3s ease;
-    }
-
-    .cdo-logo:hover {
-      transform: scale(1.05);
     }
 
     .cdo-text {
@@ -84,27 +69,18 @@
       text-shadow: 0 2px 8px rgba(250, 204, 21, 0.4);
     }
 
-    /* Top Right 3-Line Menu Button */
     .menu-toggle {
       background: transparent;
       border: none;
       color: var(--accent-yellow);
       font-size: 2rem;
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       width: 44px;
       height: 44px;
       border-radius: 8px;
-      transition: background 0.2s;
     }
 
-    .menu-toggle:hover {
-      background: rgba(250, 204, 21, 0.1);
-    }
-
-    /* Sliding Navigation Drawer */
+    /* Menu Drawer */
     .nav-drawer {
       position: fixed;
       top: 0;
@@ -116,8 +92,6 @@
       z-index: 200;
       transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
       padding: 2rem 1.5rem;
-      display: flex;
-      flex-direction: column;
     }
 
     .nav-drawer.open {
@@ -161,4 +135,281 @@
       font-size: 1.1rem;
       padding: 0.75rem 1rem;
       border-radius: 8px;
-      background: rgba(255, 255, 25
+      background: rgba(255, 255, 255, 0.03);
+      border-left: 4px solid transparent;
+      display: block;
+    }
+
+    .nav-links a:hover {
+      background: rgba(250, 204, 21, 0.15);
+      border-left-color: var(--accent-yellow);
+      color: var(--accent-yellow);
+    }
+
+    /* Hero Section */
+    .hero-section {
+      background: linear-gradient(180deg, rgba(9, 13, 22, 0.7) 0%, var(--bg-dark) 100%), 
+                  url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80') center/cover;
+      padding: 6rem 1.5rem 4rem 1.5rem;
+      text-align: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .hero-title {
+      font-size: 2.8rem;
+      font-weight: 900;
+      margin-bottom: 1rem;
+      background: linear-gradient(90deg, #ffffff, var(--accent-yellow));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+      max-width: 750px;
+      margin: 0 auto 2rem auto;
+      color: var(--text-muted);
+      font-size: 1.15rem;
+    }
+
+    .badge-highlight {
+      display: inline-block;
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--accent-emerald);
+      border: 1px solid var(--accent-emerald);
+      padding: 0.3rem 1rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Gallery Grid */
+    .container {
+      max-width: 1250px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .section-header h2 {
+      font-size: 2.2rem;
+      font-weight: 800;
+    }
+
+    .section-header span {
+      color: var(--accent-yellow);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+    }
+
+    .card-img-wrapper {
+      position: relative;
+      height: 220px;
+    }
+
+    .card-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .card-tag {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(15, 23, 42, 0.85);
+      color: var(--accent-yellow);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.25rem 0.75rem;
+      border-radius: 6px;
+      border: 1px solid var(--accent-yellow);
+    }
+
+    .card-content {
+      padding: 1.5rem;
+      flex: 1;
+    }
+
+    .card-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+      color: var(--text-light);
+    }
+
+    .card-desc {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+    }
+
+    footer {
+      background: #090d16;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 3rem 1.5rem;
+      text-align: center;
+      margin-top: 4rem;
+    }
+
+    .footer-logo {
+      color: var(--accent-yellow);
+      font-size: 1.4rem;
+      font-weight: 900;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div></div>
+    <div class="header-logo-container">
+      <div class="cdo-logo">
+        <span class="cdo-text">CDO</span>
+      </div>
+    </div>
+    <button class="menu-toggle" onclick="toggleMenu()" aria-label="Open Menu">☰</button>
+  </header>
+
+  <div class="nav-drawer" id="navDrawer">
+    <div class="drawer-header">
+      <span class="drawer-title">CDO Navigation</span>
+      <button class="close-btn" onclick="toggleMenu()">&times;</button>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#home" onclick="toggleMenu()">Back to Home</a></li>
+      <li><a href="#gallery" onclick="toggleMenu()">See Gallery</a></li>
+      <li><a href="#pictures" onclick="toggleMenu()">See Pictures</a></li>
+    </ul>
+  </div>
+
+  <section id="home" class="hero-section">
+    <span class="badge-highlight">Sahil Region Showcase</span>
+    <h1 class="hero-title">Sheikh Mountains & Bend Pass</h1>
+    <p class="hero-subtitle">Discover the high-altitude wonders, serpentine mountain roads, and rich historical landscapes of the Sheikh District in the Sahil Region.</p>
+  </section>
+
+  <main class="container" id="gallery">
+    <div class="section-header" id="pictures">
+      <h2>Sheikh & Sahil <span>Picture Collection</span></h2>
+      <p style="color: var(--text-muted); margin-top: 0.5rem;">Explore 15 curated visual highlights of the famous curved passes and scenic highland ridges.</p>
+    </div>
+
+    <div class="gallery-grid">
+      <!-- 1 -->
+      <div class="card">
+        <div class="card-img-wrapper">
+          <span class="card-tag">Iconic Pass</span>
+          <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=600&q=80" alt="Sheikh Pass Highway">
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">1. The Serpentine Sheikh Highway</h3>
+          <p class="card-desc">The famous winding mountain pass cutting directly through the steep rock cliffs of the Golis Range.</p>
+        </div>
+      </div>
+
+      <!-- 2 -->
+      <div class="card">
+        <div class="card-img-wrapper">
+          <span class="card-tag">Highlands</span>
+          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Golis Mountain Ridge">
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">2. Golis Mountain Peaks</h3>
+          <p class="card-desc">Dramatic altitude elevations offering cooler mountain air and sweeping panoramic views across Sahil.</p>
+        </div>
+      </div>
+
+      <!-- 3 -->
+      <div class="card">
+        <div class="card-img-wrapper">
+          <span class="card-tag">Landscape</span>
+          <img src="https://images.unsplash.com/photo-1511884642898-4c92249e20b6?auto=format&fit=crop&w=600&q=80" alt="Sheikh Valley">
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">3. Sheikh Highland Basin</h3>
+          <p class="card-desc">Fertile valleys cradled by mountain ridges, famous for traditional livestock routes and cool evening climates.</p>
+        </div>
+      </div>
+
+      <!-- 4 -->
+      <div class="card">
+        <div class="card-img-wrapper">
+          <span class="card-tag">Engineering</span>
+          <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=600&q=80" alt="Mountain Switchback">
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">4. Hairpin Bend Overlook</h3>
+          <p class="card-desc">A dramatic close-up perspective of the sharp curve switchbacks designed to master the steep mountain incline.</p>
+        </div>
+      </div>
+
+      <!-- 5 -->
+      <div class="card">
+        <div class="card-img-wrapper">
+          <span class="card-tag">Historical</span>
+          <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=600&q=80" alt="Sheikh Sunrise">
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">5. Dawn Over Sahil Escarpments</h3>
+          <p class="card-desc">Golden hour light illuminating the rugged stone faces and natural ridges of the Sheikh region.</p>
+        </div>
+      </div>
+
+      <!-- 6 -->
+      <div class="card">
+        <div class="card-img-wrapper">
+          <span class="card-tag">Coast & Ridge</span>
+          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80" alt="Sahil Coastal Plain View">
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">6. Descent to Sahil Plains</h3>
+          <p class="card-desc">The transitional vista where the high Sheikh mountains decline toward the warm coastal lowlands of Berbera.</p>
+        </div>
+      </div>
+
+      <!-- 7 -->
+      <div class="card">
+        <div class="card-img-wrapper">
+          <span class="card-tag">Nature</span>
+          <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=600&q=80" alt="Mountain Flora">
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">7. Highland Vegetation & Trees</h3>
+          <p class="card-desc">Unique frankincense and acacia varieties thriving in the mist-rich microclimates of high elevation.</p>
+        </div>
+      </div>
+
+      <!-- 8 -->
+      <div class="card">
+        <div class="card-img-wrapper">
+          <span class="card-tag">Gorge</span>
+          <img src="https://images.unsplash.com/photo-1434394354979-a235cd36269d?auto=format&fit=crop&w=600&q=80" alt="Sheikh Canyon">
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">8. Deep Mountain Canyons</h3>
+          <p class="card-desc">Carved rock ravines formed over centuries by seasonal rainfall runoff flowing down from the summits.</p>
+        </div>
