@@ -1,401 +1,335 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pharo Ministry of Education</title>
-  <style>
-    /* Global Reset & Styling */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-
-    body {
-      background-color: #f8fafc;
-      color: #1e293b;
-      line-height: 1.6;
-    }
-
-    /* Fixed Top Navigation Header */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background-color: #0f172a;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    }
-
-    .navbar {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 1.5rem;
-    }
-
-    .brand-logo {
-      color: #ffffff;
-      font-size: 1.25rem;
-      font-weight: 700;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    /* Top 3 Menu Action Buttons */
-    .nav-buttons {
-      display: flex;
-      gap: 0.75rem;
-    }
-
-    .btn {
-      padding: 0.6rem 1.2rem;
-      border-radius: 6px;
-      font-weight: 600;
-      font-size: 0.9rem;
-      text-decoration: none;
-      transition: all 0.2s ease-in-out;
-      cursor: pointer;
-      border: none;
-    }
-
-    .btn-primary {
-      background-color: #2563eb;
-      color: #ffffff;
-    }
-
-    .btn-primary:hover {
-      background-color: #1d4ed8;
-    }
-
-    .btn-secondary {
-      background-color: #334155;
-      color: #ffffff;
-    }
-
-    .btn-secondary:hover {
-      background-color: #475569;
-    }
-
-    .btn-accent {
-      background-color: #0d9488;
-      color: #ffffff;
-    }
-
-    .btn-accent:hover {
-      background-color: #0f766e;
-    }
-
-    /* Hero Section */
-    .hero {
-      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-      color: #ffffff;
-      padding: 5rem 1.5rem;
-      text-align: center;
-    }
-
-    .hero-content {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .hero h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      font-weight: 800;
-    }
-
-    .hero p {
-      font-size: 1.15rem;
-      color: #94a3b8;
-      margin-bottom: 2rem;
-    }
-
-    /* Section Containers */
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 4rem 1.5rem;
-    }
-
-    .section-title {
-      text-align: center;
-      font-size: 2rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-      color: #0f172a;
-    }
-
-    .section-subtitle {
-      text-align: center;
-      color: #64748b;
-      margin-bottom: 3rem;
-    }
-
-    /* Stats Banner */
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1.5rem;
-      background: #ffffff;
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-      margin-bottom: 4rem;
-    }
-
-    .stat-card {
-      text-align: center;
-    }
-
-    .stat-number {
-      font-size: 2.25rem;
-      font-weight: 800;
-      color: #2563eb;
-    }
-
-    .stat-label {
-      color: #64748b;
-      font-size: 0.9rem;
-    }
-
-    /* 10-Picture Gallery Grid */
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .gallery-card {
-      background: #ffffff;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .gallery-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-    }
-
-    .gallery-card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      display: block;
-    }
-
-    .gallery-info {
-      padding: 1rem;
-    }
-
-    .gallery-info h3 {
-      font-size: 1rem;
-      margin-bottom: 0.25rem;
-      color: #0f172a;
-    }
-
-    .gallery-info p {
-      font-size: 0.85rem;
-      color: #64748b;
-    }
-
-    /* Footer */
-    footer {
-      background-color: #0f172a;
-      color: #94a3b8;
-      padding: 2.5rem 1.5rem;
-      text-align: center;
-      font-size: 0.9rem;
-      margin-top: 4rem;
-    }
-
-    footer p {
-      margin-bottom: 0.5rem;
-    }
-
-    /* Responsive Design for Mobile */
-    @media (max-width: 640px) {
-      .navbar {
-        flex-direction: column;
-        gap: 1rem;
-      }
-      
-      .nav-buttons {
-        width: 100%;
-        justify-content: center;
-      }
-
-      .btn {
-        padding: 0.5rem 0.8rem;
-        font-size: 0.8rem;
-      }
-
-      .hero h1 {
-        font-size: 1.8rem;
-      }
-    }
-  </style>
-</head>
-<body>
-
-  <!-- Top Fixed Header & 3 Menu Buttons -->
-  <header>
-    <div class="navbar">
-      <a href="#home" class="brand-logo">🎓 Pharo Education</a>
-      <div class="nav-buttons">
-        <a href="#home" class="btn btn-primary">Home</a>
-        <a href="#stats" class="btn btn-secondary">Programs</a>
-        <a href="#gallery" class="btn btn-accent">Gallery</a>
-      </div>
-    </div>
-  </header>
-
-  <!-- Hero Section -->
-  <section id="home" class="hero">
-    <div class="hero-content">
-      <h1>Pharo Ministry of Education Portal</h1>
-      <p>Empowering learners, advancing institutional excellence, and shaping future leadership through structured digital infrastructure.</p>
-      <a href="#gallery" class="btn btn-primary">Explore Campus Life</a>
-    </div>
-  </section>
-
-  <!-- Main Container -->
-  <main class="container">
-
-    <!-- Key Metrics Section -->
-    <section id="stats">
-      <div class="stats-grid">
-        <div class="stat-card">
-          <div class="stat-number">12,500+</div>
-          <div class="stat-label">Active Students</div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Name | Portfolio</title>
+    <meta
+      name="description"
+      content="Portfolio website for a developer, designer, and problem solver."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="header">
+      <nav class="nav container">
+        <a href="#home" class="logo">Your<span>Name</span></a>
+        <button class="nav-toggle" aria-label="Open menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <div class="nav-links">
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+          <a href="#contact" class="btn btn-small">Hire Me</a>
         </div>
-        <div class="stat-card">
-          <div class="stat-number">450+</div>
-          <div class="stat-label">Certified Educators</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-number">98%</div>
-          <div class="stat-label">Graduation Rate</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-number">24/7</div>
-          <div class="stat-label">Digital Support</div>
-        </div>
-      </div>
-    </section>
+      </nav>
+    </header>
 
-    <!-- 10 Pictures Gallery Section -->
-    <section id="gallery">
-      <h2 class="section-title">Educational Showcase</h2>
-      <p class="section-subtitle">A glimpse into our academic initiatives, laboratories, and student activities.</p>
+    <main>
+      <section id="home" class="hero">
+        <div class="container hero-inner">
+          <div class="hero-content">
+            <p class="eyebrow">Hello, I’m</p>
+            <h1>
+              <span class="typing-text" data-text="Your Name"></span>
+            </h1>
+            <p class="tagline">
+              I build <span>modern web experiences</span> that are fast,
+              functional, and user-focused.
+            </p>
+            <div class="hero-actions">
+              <a href="#projects" class="btn">View Projects</a>
+              <a href="#contact" class="btn btn-secondary">Contact Me</a>
+            </div>
+            <div class="socials">
+              <a href="https://github.com/yourusername" target="_blank" rel="noreferrer">
+                GitHub
+              </a>
+              <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noreferrer">
+                LinkedIn
+              </a>
+              <a href="mailto:you@example.com">Email</a>
+            </div>
+          </div>
 
-      <div class="gallery-grid">
-        <!-- Photo 1 -->
-        <div class="gallery-card">
-          <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=600&q=80" alt="Students studying">
-          <div class="gallery-info">
-            <h3>Student Learning</h3>
-            <p>Interactive peer discussions and academic collaborative projects.</p>
+          <div class="hero-visual">
+            <div class="profile-card">
+              <div class="profile-glow"></div>
+              <div class="profile-image">
+                <img
+                  src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=80"
+                  alt="Profile"
+                />
+              </div>
+              <div class="profile-badge">
+                <span>Available for work</span>
+              </div>
+            </div>
           </div>
         </div>
+      </section>
 
-        <!-- Photo 2 -->
-        <div class="gallery-card">
-          <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=600&q=80" alt="Classroom lecture">
-          <div class="gallery-info">
-            <h3>Interactive Classrooms</h3>
-            <p>Modern teaching techniques supported by digital tools.</p>
+      <section id="about" class="section">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">About Me</p>
+            <h2>Building useful products and meaningful experiences.</h2>
+          </div>
+
+          <div class="about-grid">
+            <div class="about-card">
+              <h3>Who I am</h3>
+              <p>
+                I’m a passionate developer focused on clean code, thoughtful
+                design, and solving real user problems. I enjoy turning ideas
+                into reliable digital products that people actually enjoy using.
+              </p>
+            </div>
+
+            <div class="about-card">
+              <h3>What I do</h3>
+              <p>
+                I design and develop responsive websites, web apps, and
+                interactive interfaces using modern tools and best practices.
+                Whether it’s frontend work or full-stack problem solving, I like
+                building polished solutions from concept to launch.
+              </p>
+            </div>
+
+            <div class="about-card">
+              <h3>How I work</h3>
+              <p>
+                I believe in clear communication, iterative development, and
+                creating experiences that balance usability, performance, and
+                business goals.
+              </p>
+            </div>
           </div>
         </div>
+      </section>
 
-        <!-- Photo 3 -->
-        <div class="gallery-card">
-          <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=600&q=80" alt="Lecture hall">
-          <div class="gallery-info">
-            <h3>Academic Lectures</h3>
-            <p>Comprehensive subject instructions led by experienced educators.</p>
+      <section id="skills" class="section alt">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Skills</p>
+            <h2>Tools and technologies I use.</h2>
+          </div>
+
+          <div class="skills-grid">
+            <div class="skill-card">
+              <h3>Frontend</h3>
+              <ul>
+                <li>HTML5</li>
+                <li>CSS3</li>
+                <li>JavaScript</li>
+                <li>React</li>
+                <li>Tailwind CSS</li>
+              </ul>
+            </div>
+
+            <div class="skill-card">
+              <h3>Backend</h3>
+              <ul>
+                <li>Node.js</li>
+                <li>Express</li>
+                <li>REST APIs</li>
+                <li>Authentication</li>
+                <li>Database Design</li>
+              </ul>
+            </div>
+
+            <div class="skill-card">
+              <h3>Tools</h3>
+              <ul>
+                <li>Git & GitHub</li>
+                <li>VS Code</li>
+                <li>Figma</li>
+                <li>Postman</li>
+                <li>Docker</li>
+              </ul>
+            </div>
+
+            <div class="skill-card">
+              <h3>Workflow</h3>
+              <ul>
+                <li>Responsive Design</li>
+                <li>UI/UX Thinking</li>
+                <li>Problem Solving</li>
+                <li>Agile Collaboration</li>
+                <li>Performance Optimization</li>
+              </ul>
+            </div>
           </div>
         </div>
+      </section>
 
-        <!-- Photo 4 -->
-        <div class="gallery-card">
-          <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=600&q=80" alt="Science laboratory">
-          <div class="gallery-info">
-            <h3>Science & Research</h3>
-            <p>Hands-on experimentation in advanced science laboratories.</p>
+      <section id="projects" class="section">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Projects</p>
+            <h2>Selected work I’m proud of.</h2>
+          </div>
+
+          <div class="projects-grid">
+            <article class="project-card">
+              <div class="project-image project-one"></div>
+              <div class="project-content">
+                <h3>E-Commerce Dashboard</h3>
+                <p>
+                  A complete admin dashboard for tracking sales, inventory, and
+                  user activity with clear analytics and a clean UI.
+                </p>
+                <div class="project-tags">
+                  <span>React</span>
+                  <span>Node.js</span>
+                  <span>MongoDB</span>
+                </div>
+                <div class="project-links">
+                  <a href="#">Live Demo</a>
+                  <a href="#">Source Code</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-card">
+              <div class="project-image project-two"></div>
+              <div class="project-content">
+                <h3>Learning Platform</h3>
+                <p>
+                  An educational platform built for content discovery, course
+                  enrollment, and user progression with engaging interactions.
+                </p>
+                <div class="project-tags">
+                  <span>JavaScript</span>
+                  <span>CSS</span>
+                  <span>API</span>
+                </div>
+                <div class="project-links">
+                  <a href="#">Live Demo</a>
+                  <a href="#">Source Code</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-card">
+              <div class="project-image project-three"></div>
+              <div class="project-content">
+                <h3>Startup Landing Page</h3>
+                <p>
+                  A modern startup website focused on conversions, storytelling,
+                  and strong product positioning.
+                </p>
+                <div class="project-tags">
+                  <span>HTML</span>
+                  <span>CSS</span>
+                  <span>JavaScript</span>
+                </div>
+                <div class="project-links">
+                  <a href="#">Live Demo</a>
+                  <a href="#">Source Code</a>
+                </div>
+              </div>
+            </article>
           </div>
         </div>
+      </section>
 
-        <!-- Photo 5 -->
-        <div class="gallery-card">
-          <img src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=600&q=80" alt="Library shelf">
-          <div class="gallery-info">
-            <h3>Digital Library</h3>
-            <p>Extensive collections of reference materials and study spaces.</p>
+      <section class="section stats">
+        <div class="container stats-grid">
+          <div class="stat">
+            <strong data-count="3">0</strong>
+            <span>Years Experience</span>
+          </div>
+          <div class="stat">
+            <strong data-count="20">0</strong>
+            <span>Projects Completed</span>
+          </div>
+          <div class="stat">
+            <strong data-count="8">0</strong>
+            <span>Technologies</span>
+          </div>
+          <div class="stat">
+            <strong data-count="100">0</strong>
+            <span>Client Satisfaction</span>
           </div>
         </div>
+      </section>
 
-        <!-- Photo 6 -->
-        <div class="gallery-card">
-          <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80" alt="Computer lab">
-          <div class="gallery-info">
-            <h3>Technology Labs</h3>
-            <p>Digital literacy and software engineering training environments.</p>
+      <section id="contact" class="section contact">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Contact</p>
+            <h2>Let’s build something great together.</h2>
+          </div>
+
+          <div class="contact-box">
+            <form class="contact-form" id="contactForm">
+              <div class="input-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" placeholder="Your name" required />
+              </div>
+
+              <div class="input-group">
+                <label for="email">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  placeholder="you@example.com"
+                  required
+                />
+              </div>
+
+              <div class="input-group">
+                <label for="message">Message</label>
+                <textarea
+                  id="message"
+                  rows="6"
+                  placeholder="Write your message here..."
+                  required
+                ></textarea>
+              </div>
+
+              <button type="submit" class="btn">Send Message</button>
+            </form>
+
+            <div class="contact-info">
+              <h3>Get in touch</h3>
+              <p>
+                I’m open to freelance work, collaborations, and full-time
+                opportunities.
+              </p>
+
+              <ul>
+                <li>Email: <a href="mailto:you@example.com">you@example.com</a></li>
+                <li>Phone: <a href="tel:+1234567890">+1 (234) 567-890</a></li>
+                <li>Location: Your City, Country</li>
+              </ul>
+            </div>
           </div>
         </div>
+      </section>
+    </main>
 
-        <!-- Photo 7 -->
-        <div class="gallery-card">
-          <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=600&q=80" alt="School library space">
-          <div class="gallery-info">
-            <h3>Study Resource Hub</h3>
-            <p>Quiet study zones dedicated to focused exam preparation.</p>
-          </div>
-        </div>
-
-        <!-- Photo 8 -->
-        <div class="gallery-card">
-          <img src="https://images.unsplash.com/photo-1541829070764-84a7d30dd3f3?auto=format&fit=crop&w=600&q=80" alt="University campus ground">
-          <div class="gallery-info">
-            <h3>Campus Environment</h3>
-            <p>Maintained educational facilities designed for optimal learning.</p>
-          </div>
-        </div>
-
-        <!-- Photo 9 -->
-        <div class="gallery-card">
-          <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=600&q=80" alt="Graduation cap">
-          <div class="gallery-info">
-            <h3>Graduation & Achievements</h3>
-            <p>Celebrating student excellence and academic completion.</p>
-          </div>
-        </div>
-
-        <!-- Photo 10 -->
-        <div class="gallery-card">
-          <img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?auto=format&fit=crop&w=600&q=80" alt="Group discussion">
-          <div class="gallery-info">
-            <h3>Leadership Development</h3>
-            <p>Developing future executive skills and peer leadership teams.</p>
-          </div>
+    <footer class="footer">
+      <div class="container footer-inner">
+        <p>© <span id="year"></span> Your Name. All rights reserved.</p>
+        <div class="footer-links">
+          <a href="https://github.com/yourusername" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noreferrer">LinkedIn</a>
         </div>
       </div>
-    </section>
+    </footer>
 
-  </main>
-
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2026 Pharo Ministry of Education. All rights reserved.</p>
-    <p>Powered by HTML, CSS, and Netlify continuous integration pipeline.</p>
-  </footer>
-
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
