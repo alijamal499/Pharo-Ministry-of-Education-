@@ -1,268 +1,775 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CDO | Creative Digital Studio</title>
-  <meta name="description" content="Animated creative digital studio website with CDO center logo and motion effects." />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CDO | Sheikh & Sahil Interactive Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+  
   <style>
     :root {
-      --bg: #050816;
-      --bg-2: #0b1120;
-      --panel: rgba(17, 24, 39, 0.72);
-      --panel-strong: rgba(15, 23, 42, 0.96);
-      --text: #e5eefc;
-      --muted: #9bb0d0;
-      --primary: #7c3aed;
-      --secondary: #18d4ff;
-      --accent: #ff4ecd;
-      --line: rgba(255,255,255,0.12);
-      --shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      --bg-dark: #060911;
+      --card-bg: #0f172a;
+      --accent-yellow: #facc15;
+      --accent-gold: #eab308;
+      --accent-emerald: #10b981;
+      --accent-cyan: #06b6d4;
+      --text-light: #f8fafc;
+      --text-muted: #94a3b8;
     }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
+    * {
+      box-sizing: border-box;
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background:
-        radial-gradient(circle at top, rgba(124,58,237,0.25), transparent 30%),
-        radial-gradient(circle at bottom right, rgba(24,212,255,0.18), transparent 30%),
-        linear-gradient(180deg, var(--bg), var(--bg-2));
-      color: var(--text);
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+      line-height: 1.6;
       overflow-x: hidden;
     }
 
-    img { max-width: 100%; display: block; }
-    a { text-decoration: none; color: inherit; }
-
-    .container {
-      width: min(1200px, calc(100% - 32px));
-      margin: 0 auto;
-    }
-
-    /* Header */
+    /* Header & Logo */
     header {
-      position: fixed;
+      position: sticky;
       top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 30;
-      background: rgba(5, 8, 22, 0.18);
+      z-index: 100;
+      background: rgba(6, 9, 17, 0.92);
       backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-
-    .nav {
+      border-bottom: 2px solid rgba(250, 204, 21, 0.25);
+      padding: 0.85rem 1.75rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      min-height: 78px;
     }
 
-    .brand {
+    .header-logo-container {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .cdo-logo {
+      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+      border: 2.5px solid var(--accent-yellow);
+      border-radius: 50px;
+      padding: 0.45rem 1.6rem;
+      box-shadow: 0 0 20px rgba(250, 204, 21, 0.35);
+      transition: transform 0.3s ease;
+    }
+
+    .cdo-logo:hover {
+      transform: scale(1.06);
+    }
+
+    .cdo-text {
+      color: var(--accent-yellow);
       font-size: 1.7rem;
       font-weight: 900;
-      letter-spacing: 0.18em;
-      position: relative;
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      color: #fff;
-    }
-
-    .brand-mark {
-      width: 44px;
-      height: 44px;
-      border: 2px solid rgba(255,255,255,0.5);
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      background: radial-gradient(circle, rgba(124,58,237,0.35), rgba(24,212,255,0.08));
-      box-shadow: 0 0 18px rgba(124,58,237,0.5);
-    }
-
-    .brand-mark::before {
-      content: "CD";
-      font-size: 0.8rem;
-      font-weight: 800;
-      letter-spacing: 0.06em;
-      color: #fff;
-    }
-
-    .nav-menu {
-      display: flex;
-      gap: 28px;
-      align-items: center;
-    }
-
-    .nav-menu a {
-      color: rgba(255,255,255,0.82);
-      font-size: 0.96rem;
-      transition: 0.3s ease;
-      position: relative;
-    }
-
-    .nav-menu a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -8px;
-      width: 0%;
-      height: 2px;
-      background: linear-gradient(90deg, var(--secondary), var(--primary), var(--accent));
-      transition: 0.3s ease;
-    }
-
-    .nav-menu a:hover { color: #fff; }
-    .nav-menu a:hover::after { width: 100%; }
-
-    .nav-cta {
-      padding: 12px 22px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.16);
-      background: linear-gradient(135deg, rgba(124,58,237,0.30), rgba(24,212,255,0.12));
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      transition: 0.3s ease;
-    }
-
-    .nav-cta:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 30px rgba(124,58,237,0.4);
+      letter-spacing: 3px;
+      text-shadow: 0 2px 10px rgba(250, 204, 21, 0.5);
     }
 
     .menu-toggle {
-      display: none;
+      background: transparent;
+      border: none;
+      color: var(--accent-yellow);
+      font-size: 2.2rem;
+      cursor: pointer;
+      width: 46px;
+      height: 46px;
+      border-radius: 8px;
+      transition: background 0.2s;
+    }
+
+    .menu-toggle:hover {
+      background: rgba(250, 204, 21, 0.15);
+    }
+
+    /* Sliding Drawer Menu */
+    .nav-drawer {
+      position: fixed;
+      top: 0;
+      right: -320px;
+      width: 300px;
+      height: 100vh;
+      background: #0b1120;
+      box-shadow: -10px 0 30px rgba(0, 0, 0, 0.8);
+      z-index: 200;
+      transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      padding: 2.2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .nav-drawer.open {
+      right: 0;
+    }
+
+    .drawer-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 1rem;
+    }
+
+    .drawer-title {
+      color: var(--accent-yellow);
+      font-weight: 900;
+      font-size: 1.25rem;
+    }
+
+    .close-btn {
       background: none;
       border: none;
-      color: #fff;
+      color: var(--text-light);
       font-size: 2rem;
       cursor: pointer;
     }
 
-    /* Hero */
-    .hero {
-      position: relative;
-      min-height: 100vh;
+    .nav-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .nav-links a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.05rem;
+      padding: 0.8rem 1rem;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.03);
+      border-left: 4px solid transparent;
       display: flex;
       align-items: center;
-      padding-top: 90px;
+      justify-content: space-between;
+      transition: all 0.25s ease;
+    }
+
+    .nav-links a:hover {
+      background: rgba(250, 204, 21, 0.15);
+      border-left-color: var(--accent-yellow);
+      color: var(--accent-yellow);
+      transform: translateX(4px);
+    }
+
+    /* Hero Section with Moving Video Background */
+    .hero-section {
+      position: relative;
+      height: 70vh;
+      min-height: 480px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
       overflow: hidden;
     }
 
     .hero-video {
       position: absolute;
-      inset: 0;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      z-index: 1;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+      filter: brightness(0.45);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 1.5rem;
+      max-width: 850px;
+    }
+
+    .hero-title {
+      font-size: 3rem;
+      font-weight: 900;
+      margin-bottom: 1.2rem;
+      background: linear-gradient(90deg, #ffffff, var(--accent-yellow));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+      color: #e2e8f0;
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    .badge-highlight {
+      display: inline-block;
+      background: rgba(16, 185, 129, 0.2);
+      color: var(--accent-emerald);
+      border: 1px solid var(--accent-emerald);
+      padding: 0.35rem 1.2rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+
+    .action-btn {
+      background: linear-gradient(135deg, var(--accent-yellow), var(--accent-gold));
+      color: #000;
+      font-weight: 800;
+      padding: 0.9rem 2rem;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      font-size: 1.05rem;
+      box-shadow: 0 4px 15px rgba(250, 204, 21, 0.4);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .action-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(250, 204, 21, 0.6);
+    }
+
+    /* Container & Sections */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .section-header h2 {
+      font-size: 2.3rem;
+      font-weight: 900;
+    }
+
+    .section-header span {
+      color: var(--accent-yellow);
+    }
+
+    /* Video Cards Grid */
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 2rem;
+      margin-bottom: 5rem;
+    }
+
+    .video-card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    }
+
+    .video-card video {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .video-card-body {
+      padding: 1.5rem;
+    }
+
+    .video-card-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--accent-yellow);
+      margin-bottom: 0.5rem;
+    }
+
+    /* Photo Grid */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 2rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6), 0 0 15px rgba(250, 204, 21, 0.2);
+    }
+
+    .card-img-wrapper {
+      position: relative;
+      height: 220px;
+      overflow: hidden;
+    }
+
+    .card-img-wrapper img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.24;
-      filter: brightness(0.8) saturate(1.3);
+      transition: transform 0.5s ease;
     }
 
-    .hero-overlay {
+    .card:hover .card-img-wrapper img {
+      transform: scale(1.08);
+    }
+
+    .card-tag {
       position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(90deg, rgba(5,8,22,0.82), rgba(5,8,22,0.38), rgba(5,8,22,0.76)),
-        radial-gradient(circle at center, transparent 30%, rgba(5,8,22,0.7) 100%);
+      top: 12px;
+      left: 12px;
+      background: rgba(6, 9, 17, 0.88);
+      color: var(--accent-yellow);
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 0.3rem 0.8rem;
+      border-radius: 6px;
+      border: 1px solid var(--accent-yellow);
     }
 
-    .hero-grid {
-      position: relative;
-      z-index: 2;
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 30px;
-      align-items: center;
-      width: min(1200px, calc(100% - 32px));
-      margin: 0 auto;
+    .card-content {
+      padding: 1.5rem;
+      flex: 1;
     }
 
-    .hero-copy {
-      animation: fadeUp 1s ease both;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      padding: 8px 16px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.12);
-      color: var(--secondary);
-      font-size: 0.82rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
+    .card-title {
+      font-size: 1.2rem;
       font-weight: 700;
+      margin-bottom: 0.6rem;
+      color: var(--text-light);
     }
 
-    .eyebrow::before {
-      content: "";
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: var(--secondary);
-      box-shadow: 0 0 12px var(--secondary);
+    .card-desc {
+      font-size: 0.92rem;
+      color: var(--text-muted);
     }
 
-    h1 {
-      margin: 24px 0 20px;
-      font-size: clamp(2.8rem, 5vw, 6rem);
-      line-height: 0.98;
-      letter-spacing: -0.05em;
-    }
-
-    .highlight {
-      color: transparent;
-      background: linear-gradient(90deg, var(--secondary), var(--primary), var(--accent));
-      -webkit-background-clip: text;
-      background-clip: text;
-    }
-
-    .hero-copy p {
-      margin: 0;
-      max-width: 560px;
-      color: var(--muted);
-      font-size: 1.08rem;
-      line-height: 1.8;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 18px;
-      margin-top: 36px;
-    }
-
-    .btn {
-      display: inline-flex;
+    /* Interactive Modal */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+      z-index: 300;
+      display: none;
       align-items: center;
       justify-content: center;
-      min-height: 56px;
-      padding: 0 24px;
-      border-radius: 999px;
-      font-weight: 800;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      transition: 0.3s ease;
-      border: 1px solid rgba(255,255,255,0.08);
+      padding: 1.5rem;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-box {
+      background: #0f172a;
+      border: 2px solid var(--accent-yellow);
+      border-radius: 20px;
+      max-width: 550px;
+      width: 100%;
+      padding: 2rem;
+      position: relative;
+      box-shadow: 0 0 30px rgba(250, 204, 21, 0.3);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1.2rem;
+      background: none;
+      border: none;
+      color: var(--text-light);
+      font-size: 1.8rem;
       cursor: pointer;
     }
 
-    .btn.primary {
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      color: #fff;
-      box-shadow: 0 20px 40px rgba(124,58,237,0.35);
+    .modal-title {
+      color: var(--accent-yellow);
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
     }
 
-    .btn.secondary {
-      background: rgba(255,255,255,0.02);
-      color: #fff;
-      border-color: rgba(255,255,255,0.12);
+    .activity-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 1.5rem;
     }
 
-    .btn*
-
+    .activity-item {
+      background: rgba(255, 255, 255, 0.04);
+      border-radius: 10px;
+      padding: 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .activity-item h4 {
+      color: var(--accent-cyan);
+      font-size: 1.05rem;
+      margin-bottom: 0.3rem;
+    }
+
+    /* Footer */
+    footer {
+      background: #04060b;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 3rem 1.5rem;
+      text-align: center;
+      margin-top: 5rem;
+    }
+
+    .footer-logo {
+      color: var(--accent-yellow);
+      font-size: 1.6rem;
+      font-weight: 900;
+      margin-bottom: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero-title { font-size: 2.2rem; }
+      .gallery-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Header -->
+  <header>
+    <div></div>
+    <div class="header-logo-container">
+      <div class="cdo-logo">
+        <span class="cdo-text">CDO</span>
+      </div>
+    </div>
+    <button class="menu-toggle" onclick="toggleMenu()" aria-label="Open Menu">☰</button>
+  </header>
+
+  <!-- Expanded 6-Option Navigation Drawer -->
+  <div class="nav-drawer" id="navDrawer">
+    <div class="drawer-header">
+      <span class="drawer-title">CDO Menu</span>
+      <button class="close-btn" onclick="toggleMenu()">&times;</button>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#home" onclick="toggleMenu()"><span>Home</span> ➔</a></li>
+      <li><a href="#videos" onclick="toggleMenu()"><span>Featured Videos</span> ➔</a></li>
+      <li><a href="#gallery" onclick="toggleMenu()"><span>Explorer Gallery</span> ➔</a></li>
+      <li><a href="#" onclick="toggleMenu(); openActivitiesModal();"><span>Explore Activities</span> ➔</a></li>
+      <li><a href="#map" onclick="toggleMenu()"><span>Sahil Region Map</span> ➔</a></li>
+      <li><a href="#about" onclick="toggleMenu()"><span>About CDO</span> ➔</a></li>
+    </ul>
+  </div>
+
+  <!-- Hero Section with Background Video -->
+  <section id="home" class="hero-section">
+    <video class="hero-video" autoplay loop muted playsinline>
+      <source src="https://assets.mixkit.co/videos/preview/mixkit-clouds-and-blue-sky-2408-large.mp4" type="video/mp4">
+    </video>
+    <div class="hero-content">
+      <span class="badge-highlight">Sahil Region Dynamic Showcase</span>
+      <h1 class="hero-title">Sheikh Mountains & Bend Pass</h1>
+      <p class="hero-subtitle">Experience high-altitude landscapes, serpentine roads, and mountain vistas through motion and gallery photography.</p>
+      <button class="action-btn" onclick="openActivitiesModal()">Explore Activities</button>
+    </div>
+  </section>
+
+  <main class="container">
+
+    <!-- Video Showcase Section -->
+    <div class="section-header" id="videos">
+      <h2>Featured <span>Video Motion</span></h2>
+      <p style="color: var(--text-muted); margin-top: 0.5rem;">Watch movement across mountain passes and natural highlands.</p>
+    </div>
+
+    <div class="video-grid">
+      <div class="video-card">
+        <video controls poster="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=600&q=80">
+          <source src="https://assets.mixkit.co/videos/preview/mixkit-driving-on-a-curved-road-in-the-mountains-41549-large.mp4" type="video/mp4">
+        </video>
+        <div class="video-card-body">
+          <h3 class="video-card-title">1. Sheikh Bend Highway Drive</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">Navigating through sharp mountain turns and rock cutouts.</p>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <video controls poster="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80">
+          <source src="https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-a-mountain-landscape-40251-large.mp4" type="video/mp4">
+        </video>
+        <div class="video-card-body">
+          <h3 class="video-card-title">2. Golis Summit Aerial View</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">Wide atmospheric perspective showing cloud cover over high elevation ridges.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 15-Picture Gallery -->
+    <div class="section-header" id="gallery">
+      <h2>Sheikh & Sahil <span>Picture Collection</span></h2>
+      <p style="color: var(--text-muted); margin-top: 0.5rem;">Curated highlights showcasing the 15 distinct natural viewpoints.</p>
+    </div>
+
+    <div class="gallery-grid">
+      <!-- 1 -->
+      <div class="card">
+        <div class="card-img-wrapper">
+          <span class="card-tag">Iconic Pass</span>
+          <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=600&q=80" alt="Sheikh Pass Highway">
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">1. The Serpentine Sheikh Highway</h3>
+          <p class="card-desc">The famous winding mountain pass cutting directly through steep rock cliffs.</p>
+        </div>
+      </div>
+
+      <!-- 2 -->
+      <div class="card">
+        <div class="card-img-wrapper">
+          <span class="card-tag">Highlands</span>
+          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Golis Mountain Ridge">
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">2. Golis Mountain Peaks</h3>
+          <p class="card-desc">High altitude vistas offering cooler mountain air and panoramic views.</p>
+        </div>
+      </div>
+
+      <!-- 3 -->
+      <div class="card">
+        <div class="card-img-wrapper">
+          <span class="card-tag">Landscape</span>
+          <img src="https://images.unsplash.com/photo-1511884642898-4c92249e20b6?auto=format&fit=crop&w=600&q=80" alt="Sheikh Valley">
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">3. Sheikh Highland Basin</h3>
+          <p class="card-desc">Fertile valleys cradled by mountain ridges, famous for temperate climates.</p>
+        </div>
+      </div>
+
+      <!-- 4 -->
+      <div class="card">
+        <div class="card-img-wrapper">
+          <span class="card-tag">Engineering</span>
+          <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=600&q=80" alt="Mountain Switchback">
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">4. Hairpin Bend Overlook</h3>
+          <p class="card-desc">Sharp curve switchbacks designed to master steep mountain inclines.</p>
+        </div>
+      </div>
+
+      <!-- 5 -->
+      <div class="card">
+        <div class="card-img-wrapper">
+          <span class="card-tag">Historical</span>
+          <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=600&q=80" alt="Sheikh Sunrise">
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">5. Dawn Over Sahil Escarpments</h3>
+          <p class="card-desc">Golden hour light illuminating rugged stone faces across the ridge.</p>
+        </div>
+      </div>
+
+      <!-- 6 -->
+      <div class="card">
+        <div class="card-img-wrapper">
+          <span class="card-tag">Coast & Ridge</span>
+          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80" alt="Sahil Coastal View">
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">6. Descent to Sahil Plains</h3>
+          <p class="card-desc">The vista where Sheikh mountains decline toward warm coastal lowlands.</p>
+        </div>
+      </div>
+
+      <!-- 7 -->
+      <div class="card">
+        <div class="card-img-wrapper">
+          <span class="card-tag">Nature</span>
+          <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=600&q=80" alt="Mountain Flora">
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">7. Highland Vegetation & Trees</h3>
+          <p class="card-desc">Flora thriving in the mist-rich microclimates of high elevation.</p>
+        </div>
+      </div>
+
+      <!-- 8 -->
+      <div class="card">
+        <div class="card-img-wrapper">
+          <span class="card-tag">Gorge</span>
+          <img src="https://images.unsplash.com/photo-1434394354979-a235cd36269d?auto=format&fit=crop&w=600&q=80" alt="Sheikh Canyon">
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">8. Deep Mountain Canyons</h3>
+          <p class="card-desc">Rock ravines carved over centuries by seasonal rainfall runoff.</p>
+        </div>
+      </div>
+
+      <!-- 9 -->
+      <div class="card">
+        <div class="card-img-wrapper">
+          <span class="card-tag">Sunset</span>
+          <img src="https://images.unsplash.com/photo-1495616811223-4d98c6e9c869?auto=format&fit=crop&w=600&q=80" alt="Sunset Summit">
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">9. Twilight Summit View</h3>
+          <p class="card-desc">Purple and orange horizons framing mountain silhouettes at dusk.</p>
+        </div>
+      </div>
+
+      <!-- 10 -->
+      <div class="card">
+        <div class="card-img-wrapper">
+          <span class="card-tag">Transit</span>
+          <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=600&q=80" alt="Highway Transit">
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">10. Trade Corridor Arteries</h3>
+          <p class="card-desc">Connecting interior commercial hubs with maritime sea trade routes.</p>
+        </div>
+      </div>
+
+      <!-- 11 -->
+      <div class="card">
+        <div class="card-img-wrapper">
+          <span class="card-tag">Golis mist</span>
+          <img src="https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?auto=format&fit=crop&w=600&q=80" alt="Morning Mist">
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">11. Morning Cloud Blanket</h3>
+          <p class="card-desc">Low-hanging cloud layers rolling across passes during early morning.</p>
+        </div>
+      </div>
+
+      <!-- 12 -->
+      <div class="card">
+        <div class="card-img-wrapper">
+          <span class="card-tag">Geology</span>
+          <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=600&q=80" alt="Strata Rock">
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">12. Ancient Rock Formations</h3>
+          <p class="card-desc">Exposed geological layers revealing natural rock history.</p>
+        </div>
+      </div>
+
+      <!-- 13 -->
+      <div class="card">
+        <div class="card-img-wrapper">
+          <span class="card-tag">Outlooks</span>
+          <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=600&q=80" alt="High Outlook">
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">13. High Outlook Station</h3>
+          <p class="card-desc">Rest stops along the highway with expansive valley vistas.</p>
+        </div>
+      </div>
+
+      <!-- 14 -->
+      <div class="card">
+        <div class="card-img-wrapper">
+          <span class="card-tag">Highlands</span>
+          <img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&fit=crop&w=600&q=80" alt="Plateau Meadow">
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">14. Plateau Grazing Lands</h3>
+          <p class="card-desc">Elevated pasture lands utilized amidst temperate mountain weather.</p>
+        </div>
+      </div>
+
+      <!-- 15 -->
+      <div class="card">
+        <div class="card-img-wrapper">
+          <span class="card-tag">Night Sky</span>
+          <img src="https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?auto=format&fit=crop&w=600&q=80" alt="Night Starlight">
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">15. Clear Starlight Above Sheikh</h3>
+          <p class="card-desc">Pristine night skies free of city light pollution.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Interactive Modal for "Explore Activities" -->
+  <div class="modal-overlay" id="activitiesModal">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeActivitiesModal()">&times;</button>
+      <h3 class="modal-title">Explore Sahil Activities</h3>
+      <p style="color: var(--text-muted);">Choose an activity option to explore guided routes:</p>
+      
+      <ul class="activity-list">
+        <li class="activity-item">
+          <h4>🥾 Mountain Hiking & Trekking</h4>
+          <p style="color: var(--text-muted); font-size: 0.88rem;">Explore trail routes along the Golis range and scenic overlooks.</p>
+        </li>
+        <li class="activity-item">
+          <h4>🚗 Sheikh Bend Scenic Drive</h4>
+          <p style="color: var(--text-muted); font-size: 0.88rem;">Drive the famous hairpin curves connecting coastal Berbera to Burao.</p>
+        </li>
+        <li class="activity-item">
+          <h4>🏛️ Historical Heritage Tours</h4>
+          <p style="color: var(--text-muted); font-size: 0.88rem;">Visit historic British colonial era structures and local educational sites.</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- About Section -->
+  <section id="about" style="max-width: 800px; margin: 4rem auto 0 auto; text-align: center; padding: 0 1.5rem;">
+    <h3 style="color: var(--accent-yellow); font-size: 1.6rem; font-weight: 800;">About CDO Portal</h3>
+    <p style="color: var(--text-muted); margin-top: 0.8rem;">CDO is an interactive digital portal dedicated to showcasing the landscapes, highways, and geography of the Sheikh District in the Sahil Region.</p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-logo">CDO</div>
+    <p>&copy; 2026 CDO Portal. Sheikh & Sahil Region Explorer.</p>
+  </footer>
+
+  <!-- Interactive JavaScript Functions -->
+  <script>
+    function toggleMenu() {
+      const drawer = document.getElementById('navDrawer');
+      drawer.classList.toggle('open');
+    }
+
+    function openActivitiesModal() {
+      document.getElementById('activitiesModal').classList.add('active');
+    }
+
+    function closeActivitiesModal() {
+      document.getElementById('activitiesModal').classList.remove('active');
+    }
+  </script>
+</body>
+</html>
